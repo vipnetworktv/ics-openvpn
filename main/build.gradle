@@ -1,0 +1,71 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace "de.blinkt.openvpn"
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    // ✅ Enable BuildConfig generation
+    buildFeatures {
+        buildConfig = true
+    }
+
+    // ✅ Include both Java and AIDL source folders
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java']
+            aidl.srcDirs = ['src/main/aidl']
+            res.srcDirs = ['src/main/res']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+    }
+
+    // ✅ Build types
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "DEBUG", "true"
+            buildConfigField "String", "BUILD_TYPE", "\"debug\""
+            buildConfigField "String", "FLAVOR", "\"skeleton\""
+            buildConfigField "boolean", "openvpn3", "false"
+        }
+        release {
+            buildConfigField "boolean", "DEBUG", "false"
+            buildConfigField "String", "BUILD_TYPE", "\"release\""
+            buildConfigField "String", "FLAVOR", "\"skeleton\""
+            buildConfigField "boolean", "openvpn3", "false"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // ✅ Java 17 compatibility
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    // ✅ Optional: make Gradle aware of AIDL generation tasks explicitly (AGP 8+ safe)
+    buildToolsVersion = "34.0.0"
+}
+
+dependencies {
+    // ✅ AndroidX base libraries
+    implementation 'androidx.annotation:annotation:1.7.1'
+    implementation 'androidx.core:core:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+
+    // ✅ Logging & support (optional but recommended)
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.8.6'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'
+}

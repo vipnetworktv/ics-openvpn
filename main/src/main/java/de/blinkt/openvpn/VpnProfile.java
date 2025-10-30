@@ -24,7 +24,6 @@ import androidx.annotation.Nullable;
 
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Pair;
 
 import de.blinkt.openvpn.core.*;
 

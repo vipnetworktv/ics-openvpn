@@ -11,7 +11,6 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 
-import java.lang.annotation.Target;
 import java.math.BigInteger;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
@@ -25,7 +24,6 @@ import java.util.TreeSet;
 import java.util.Vector;
 
 import de.blinkt.openvpn.BuildConfig;
-
 
 
 public class NetworkSpace {
