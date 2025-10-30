@@ -30,3 +30,17 @@ polaris.yml
 idir
 
 test.local.conf
+
+# Android Studio heap dumps
+*.hprof
+
+# Build outputs and intermediates
+/build/
+/out/
+.gradle/
+*.iml
+
+# IDE cache and logs
+.idea/
+*.log
+
